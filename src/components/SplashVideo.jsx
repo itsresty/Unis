@@ -42,7 +42,7 @@ export const SplashVideo = ({ onFinish }) => {
       {/* Mobile / Portrait Video */}
       <video
         className="w-full h-full object-cover block md:hidden"
-        src="/dist/UnisPortrait.mp4" // portrait video
+        src="/UnisPortrait.mp4" // portrait video
         autoPlay
         muted
         playsInline
@@ -63,7 +63,7 @@ export const SplashVideo = ({ onFinish }) => {
       {/* Desktop / Landscape Video */}
       <video
         className="w-full h-full object-cover hidden md:block"
-        src="/dist/Unis.mp4" // landscape video
+        src="/Unis.mp4" // landscape video
         autoPlay
         muted
         playsInline
