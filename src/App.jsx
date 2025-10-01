@@ -4,6 +4,7 @@ import { NotFound } from "./pages/NotFound";
 import { useState } from "react";
 import { SplashVideo } from "./components/SplashVideo";
 
+
 function App() {
   const [showSplash, setShowSplash] = useState(true);
 

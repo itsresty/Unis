@@ -1,6 +1,8 @@
 // SplashVideo.jsx
 import React, { useState, useEffect } from "react";
 
+
+
 export const SplashVideo = ({ onFinish }) => {
   const [isVisible, setIsVisible] = useState(true);
 
@@ -20,7 +22,7 @@ export const SplashVideo = ({ onFinish }) => {
     <div className="fixed top-0 left-0 w-screen h-screen z-50 flex flex-col justify-center items-center bg-black overflow-hidden transition-opacity duration-700 ease-out">
       <video
         className="w-full min-h-screen object-cover"
-        src="/public/Unis.mp4"
+        src="/src/assets/Unis.mp4"
         autoPlay
         muted
         playsInline
