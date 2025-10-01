@@ -17,11 +17,11 @@ export const SplashVideo = ({ onFinish }) => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed top-0 left-0 w-screen h-screen z-50 flex justify-center items-center bg-black overflow-hidden transition-opacity duration-700 ease-out">
-      {/* Desktop / Landscape Video */}
+    <div className="fixed inset-0 z-50 flex justify-center items-center bg-black overflow-hidden">
+      {/* Mobile / Portrait Video */}
       <video
-        className="hidden md:block w-full h-full object-cover"
-        src="/Unis.mp4" // landscape video
+        className="w-full h-full object-cover block md:hidden" // always visible on mobile
+        src="dist/UnisPortrait.mp4" // portrait video for mobile
         autoPlay
         muted
         playsInline
@@ -30,10 +30,10 @@ export const SplashVideo = ({ onFinish }) => {
         onLoadedMetadata={(e) => e.currentTarget.play()}
       />
 
-      {/* Mobile / Portrait Video */}
+      {/* Desktop / Landscape Video */}
       <video
-        className="block md:hidden w-full h-full object-cover"
-        src="/UnisPortrait.mp4" 
+        className="w-full h-full object-cover hidden md:block" // visible on md+ screens
+        src="/dist/Unis.mp4"
         autoPlay
         muted
         playsInline
