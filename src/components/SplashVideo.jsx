@@ -26,6 +26,8 @@ export const SplashVideo = ({ onFinish }) => {
         autoPlay
         muted
         playsInline
+        loop
+        
       />
       <div className="absolute text-white text-4xl font-bold">Everafter</div>
       <div className="absolute bottom-12 text-white text-lg animate-bounce">
