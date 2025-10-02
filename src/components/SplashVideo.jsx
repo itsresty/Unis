@@ -1,9 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 export const SplashVideo = () => {
   const [isVisible, setIsVisible] = useState(true);
+  const mobileVideoRef = useRef(null);
+  const desktopVideoRef = useRef(null);
 
   useEffect(() => {
+    // Force play videos on mount
+    const playVideo = async () => {
+      try {
+        if (window.innerWidth < 768 && mobileVideoRef.current) {
+          await mobileVideoRef.current.play();
+        } else if (desktopVideoRef.current) {
+          await desktopVideoRef.current.play();
+        }
+      } catch (err) {
+        console.error("Video play error:", err);
+      }
+    };
+
+    playVideo();
+
     const handleUserInteraction = () => {
       setIsVisible(false);
     };
@@ -26,37 +43,39 @@ export const SplashVideo = () => {
     <div className="fixed inset-0 z-50 overflow-hidden bg-black">
       {/* Desktop / Landscape Video */}
       <video
+        ref={desktopVideoRef}
         className="hidden md:block w-full h-full object-cover"
-        autoPlay
         muted
         playsInline
         loop
         preload="auto"
+        style={{ backgroundColor: 'black' }}
       >
-        <source src="/public/Unis.mp4" type="video/mp4" />
+        <source src="/Unis.mp4" type="video/mp4" />
       </video>
       
       {/* Desktop Overlay */}
       <div className="hidden md:flex absolute inset-0 flex-col justify-center items-center pointer-events-none">
-        <h1 className="text-6xl font-bold text-white text-center">Everafter</h1>
-        <p className="absolute bottom-12 text-lg animate-bounce text-white">Scroll</p>
+        <h1 className="text-6xl font-bold text-white text-center drop-shadow-lg">Everafter</h1>
+        <p className="absolute bottom-12 text-lg animate-bounce text-white drop-shadow-lg">Scroll</p>
       </div>
 
       {/* Mobile / Portrait Video */}
       <video
+        ref={mobileVideoRef}
         className="block md:hidden w-full h-full object-cover"
-        autoPlay
         muted
         playsInline
         loop
         preload="auto"
+        style={{ backgroundColor: 'black' }}
       >
-        <source src="/public/UnisPortrait.mp4" type="video/mp4" />
+        <source src="https://unisfanpage.netlify.app/UnisPortrait.mp4" />
       </video>
       
       {/* Mobile Overlay */}
       <div className="flex md:hidden absolute inset-0 flex-col justify-center items-center pointer-events-none">
-        <p className="absolute bottom-12 text-lg animate-bounce text-white px-4 text-center">
+        <p className="absolute bottom-12 text-lg animate-bounce text-white px-4 text-center drop-shadow-lg">
           Tap to continue
         </p>
       </div>
