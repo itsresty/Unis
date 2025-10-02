@@ -1,60 +1,47 @@
-
-import { cn } from '@/lib/utils';
+import { useState, useEffect, useRef } from "react";
+import { cn } from "@/lib/utils";
 
 const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Portfolio", href: "#portfolio" },
-    { name: "Services", href: "#services" },
-    { name: "Blogs", href: "#services" },
+  { name: "Home", href: "#home" },
+  { 
+    name: "About", 
+    href: "#about",
+    subCategory: [
+      { name: "Members", href: "#members" },
+      { name: "Achievements", href: "#achievements" },
+      { name: "Albums", href: "#albums" },
+    ]
+  },
+  { name: "Gallery", href: "#gallery" },
+  { name: "Blogs", href: "#blogs" },
+  { name: "Community", href: "#community" },
+  { name: "Donations", href: "#donation" },
+  { name: "Contact", href: "#contact" },
 ];
 
 export const Navbar = () => {
-    return (
-        <nav className="flex items-center pt-5" >
-            <div className="container flex items-center justify-between py-4">
-                
-                    <a 
-                className="text-2xl font-bold flex items-center gap-2" 
-                href="#home" >
-                    <span className="relative">
-                    <span>Resty</span>
-                    Montero
-                    </span>
-                </a>
-                
-                
+  
 
-                {/* Desktop Nav*/}
-                <div className=" hidden md:flex items-center gap-5">
-                    {navItems.map((item, key ) => (
-                        <a 
-                        key={key} 
-                        href={item.href}>
-                        {item.name}
-                        </a>
-                    ))} 
-                </div>
+  return (
+   <nav>
+    <div>
+      
+ {/* Logo */}
+      <a href="#home" className="flex items-center gap-2">
+        <img 
+          src="/logo.svg" 
+          alt="Unis Logo"
+          className="w-12 h-12"
+        />
+      </a>
 
-                {/* Mobile Nav*/}
-                <div className={cn(
-                    "hidden "
-                )}>
-                    <div className=" flex item center gap-5">
-                    {navItems.map((item, key ) => (
-                        <a 
-                        key={key} 
-                        href={item.href}>
-                        {item.name}
-                        </a>
-                    ))} 
-                </div>
-                </div>
-                
 
-            </div>
-            
-            
-        </nav>
-    )
-}
+        <div>
+          <a>
+            {navItems.name}
+          </a>
+        </div>
+    </div>
+   </nav>
+  );
+};

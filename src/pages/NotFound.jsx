@@ -1,3 +1,5 @@
 export const NotFound = () => {
-    return <div>Not Found!</div>
+    return(
+        <div to= "#">Not Found!</div>
+    ) 
 }

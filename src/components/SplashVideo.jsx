@@ -1,90 +1,60 @@
-// SplashVideo.jsx
 import React, { useState, useEffect } from "react";
 
-export const SplashVideo = ({ onFinish }) => {
+export const SplashVideo = () => {
   const [isVisible, setIsVisible] = useState(true);
 
-  // Hide splash on scroll
   useEffect(() => {
-    const handleScroll = () => {
+    const handleUserInteraction = () => {
       setIsVisible(false);
-      if (onFinish) onFinish();
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [onFinish]);
-
-  // Retry video play on user interaction (fixes mobile power-saving pause)
-  useEffect(() => {
-    const handleInteraction = () => {
-      const videos = document.querySelectorAll("video");
-      videos.forEach((video) => {
-        if (video.paused) {
-          video.play().catch((err) => console.log("Retry play:", err));
-        }
-      });
-    };
-
-    window.addEventListener("touchstart", handleInteraction);
-    window.addEventListener("scroll", handleInteraction);
+    if (window.innerWidth >= 768) {
+      // Desktop: listen for scroll (wheel)
+      window.addEventListener("wheel", handleUserInteraction, { passive: true });
+    } else {
+      // Mobile: listen for tap (touchstart)
+      window.addEventListener("touchstart", handleUserInteraction, { passive: true });
+    }
 
     return () => {
-      window.removeEventListener("touchstart", handleInteraction);
-      window.removeEventListener("scroll", handleInteraction);
+      window.removeEventListener("wheel", handleUserInteraction);
+      window.removeEventListener("touchstart", handleUserInteraction);
     };
   }, []);
 
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-center items-center bg-black overflow-hidden transition-opacity duration-700 ease-out">
-      {/* Mobile / Portrait Video */}
-      <video
-        className="w-full h-full object-cover block md:hidden"
-        src="/UnisPortrait.mp4" // portrait video
-        autoPlay
-        muted
-        playsInline
-        loop
-        preload="auto"
-        onLoadedMetadata={(e) => {
-          const video = e.currentTarget;
-          setTimeout(() => {
-            try {
-              video.play();
-            } catch (err) {
-              console.log("Video play was interrupted:", err);
-            }
-          }, 100);
-        }}
-      />
-
+    <div className="fixed inset-0 z-50 overflow-hidden">
       {/* Desktop / Landscape Video */}
       <video
         className="w-full h-full object-cover hidden md:block"
-        src="/Unis.mp4" // landscape video
+        src="/Unis.mp4"
         autoPlay
         muted
         playsInline
         loop
         preload="auto"
-        onLoadedMetadata={(e) => {
-          const video = e.currentTarget;
-          setTimeout(() => {
-            try {
-              video.play();
-            } catch (err) {
-              console.log("Video play was interrupted:", err);
-            }
-          }, 100);
-        }}
       />
+      {/* Desktop Overlay */}
+      <div className="hidden md:flex absolute inset-0 flex-col justify-center items-center pointer-events-none">
+        <h1 className="text-6xl font-bold text-white text-center">Everafter</h1>
+        <p className="absolute bottom-12 text-lg animate-bounce text-white">Scroll</p>
+      </div>
 
-      {/* Overlay Text */}
-      <div className="absolute text-white text-4xl font-bold">Everafter</div>
-      <div className="absolute bottom-12 text-white text-lg animate-bounce">
-        Scroll ↓
+      {/* Mobile / Portrait Video */}
+      <video
+        className="w-full h-full object-cover block md:hidden"
+        src="/UnisPortrait.mp4"
+        autoPlay
+        muted
+        playsInline
+        loop
+        preload="auto"
+      />
+      {/* Mobile Overlay */}
+      <div className="flex md:hidden absolute inset-0 flex-col justify-center items-center pointer-events-none">
+        <p className="absolute bottom-12 text-lg animate-bounce text-white">Tap to continue</p>
       </div>
     </div>
   );
