@@ -66,9 +66,10 @@ export const SplashVideo = () => {
         className="block md:hidden w-full h-full object-cover"
         muted
         playsInline
+        webkit-playsInline ="true"
         loop
         preload="auto"
-        style={{ backgroundColor: 'black' }}
+       
       >
         <source src="https://unisfanpage.netlify.app/UnisPortrait.mp4" />
       </video>
