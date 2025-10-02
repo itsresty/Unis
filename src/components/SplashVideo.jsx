@@ -73,7 +73,7 @@ export const SplashVideo = () => {
         x-webkit-airplay="allow"
        
       >
-        <source src="/public/UnisPortrait.mp4" />
+        <source src="/UnisPortrait.mp4" />
       </video>
       
       {/* Mobile Overlay */}
