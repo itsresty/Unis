@@ -44,7 +44,7 @@ export const SplashVideo = () => {
 
       {/* Mobile / Portrait Video */}
       <video
-        className="w-full h-full object-cover block sm:block"
+        className="w-full h-full object-cover "
         src="/UnisPortrait.mp4"
         autoPlay
         muted
