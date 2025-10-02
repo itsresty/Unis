@@ -63,12 +63,13 @@ export const SplashVideo = () => {
       {/* Mobile / Portrait Video */}
       <video
         ref={mobileVideoRef}
-        className="block md:hidden w-full h-full object-cover"
+        className="block md:hidden w-full h-full object-cover absolute inset-0"
         muted
-        playsInline
-        webkit-playsInline ="true"
         loop
-        preload="auto"
+        playsInline
+        preload="metadata"
+        poster=""
+        x-webkit-airplay="allow"
        
       >
         <source src="https://unisfanpage.netlify.app/UnisPortrait.mp4" />
