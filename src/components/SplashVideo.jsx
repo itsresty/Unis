@@ -27,13 +27,14 @@ export const SplashVideo = () => {
       {/* Desktop / Landscape Video */}
       <video
         className="hidden md:block w-full h-full object-cover"
-        src="/Unis.mp4"
         autoPlay
         muted
         playsInline
         loop
         preload="auto"
-      />
+      >
+        <source src="/public/Unis.mp4" type="video/mp4" />
+      </video>
       
       {/* Desktop Overlay */}
       <div className="hidden md:flex absolute inset-0 flex-col justify-center items-center pointer-events-none">
@@ -44,13 +45,14 @@ export const SplashVideo = () => {
       {/* Mobile / Portrait Video */}
       <video
         className="block md:hidden w-full h-full object-cover"
-        src="/UnisPortrait.mp4"
         autoPlay
         muted
         playsInline
         loop
         preload="auto"
-      />
+      >
+        <source src="/public/UnisPortrait.mp4" type="video/mp4" />
+      </video>
       
       {/* Mobile Overlay */}
       <div className="flex md:hidden absolute inset-0 flex-col justify-center items-center pointer-events-none">
