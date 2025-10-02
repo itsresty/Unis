@@ -60,7 +60,12 @@ export const SplashVideo = () => {
         <p className="absolute bottom-12 text-lg animate-bounce text-white drop-shadow-lg">Scroll</p>
       </div>
 
-      {/* Mobile / Portrait Video */}
+      
+      
+      {/* Mobile Overlay */}
+      <div className="flex md:hidden absolute inset-0 flex-col justify-center items-center pointer-events-none">
+        
+        {/* Mobile / Portrait Video */}
       <video
         ref={mobileVideoRef}
         className=" w-full h-full object-cover "
@@ -75,9 +80,6 @@ export const SplashVideo = () => {
       >
         <source src="https://unisfanpage.netlify.app/UnisPortrait.mp4" />
       </video>
-      
-      {/* Mobile Overlay */}
-      <div className="flex md:hidden absolute inset-0 flex-col justify-center items-center pointer-events-none">
         <p className="absolute bottom-12 text-lg animate-bounce text-white px-4 text-center drop-shadow-lg">
           Tap to continue
         </p>
