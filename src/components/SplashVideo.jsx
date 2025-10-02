@@ -78,7 +78,7 @@ export const SplashVideo = () => {
         x-webkit-airplay="allow"
        
       >
-        <source src="https://unisfanpage.netlify.app/UnisPortrait.mp4" />
+        <source src="/public/Unis.mp4" />
       </video>
         <p className="absolute bottom-12 text-lg animate-bounce text-white px-4 text-center drop-shadow-lg">
           Tap to continue
