@@ -11,8 +11,7 @@ export const Home = () => {
        {/* Splash on top */}
             {showSplash && <SplashVideo onFinish={() => setShowSplash(false)} />}
 
-        {/* Navbar */}
-       <Navbar/>
+      
        
         {/* Main Content */}
         <main>

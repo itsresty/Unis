@@ -9,7 +9,7 @@ export const SplashVideo = () => {
     // Force play videos on mount
     const playVideo = async () => {
       try {
-        if (window.innerWidth < 768 && mobileVideoRef.current) {
+        if (window.innerWidth < 576 && mobileVideoRef.current) {
           await mobileVideoRef.current.play();
         } else if (desktopVideoRef.current) {
           await desktopVideoRef.current.play();
@@ -40,19 +40,21 @@ export const SplashVideo = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden bg-black">
-      {/* Desktop / Landscape Video */}
-      <video
-        ref={desktopVideoRef}
-        className="hidden md:block w-full h-full object-cover"
-        muted
-        playsInline
-        loop
-        preload="auto"
-        style={{ backgroundColor: 'black' }}
-      >
-        <source src="/Unis.mp4" type="video/mp4" />
-      </video>
+    <div className="fixed inset-0 z-[99999] overflow-hidden bg-black">
+     {/* Desktop / Landscape Video */}
+<video
+  ref={desktopVideoRef}
+  className="hidden md:block w-full h-full object-cover "
+  autoPlay
+  muted
+  playsInline
+  loop
+  preload="auto"
+  style={{ backgroundColor: 'black' }}
+>
+  <source src="/Unis.mp4" type="video/mp4" />
+</video>
+
       
       {/* Desktop Overlay */}
       <div className="hidden md:flex absolute inset-0 flex-col justify-center items-center pointer-events-none">
@@ -61,20 +63,18 @@ export const SplashVideo = () => {
       </div>
 
       {/* Mobile / Portrait Video */}
-      <video
-        ref={mobileVideoRef}
-        className=" w-full h-full object-cover absolute inset-0"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster=""
-        x-webkit-airplay="allow"
-       
-      >
-        <source src="/UnisPortrait.mp4" />
-      </video>
+<video
+  ref={mobileVideoRef}
+  className="block md:hidden w-full h-full object-cover absolute inset-0 z-40]"
+  autoPlay
+  muted
+  loop
+  playsInline   // fix typo: should be playsInline not playInline
+  preload="metadata"
+>
+  <source src="/Unis.mp4" type="video/mp4" />
+</video>
+
       
       {/* Mobile Overlay */}
       <div className="flex md:hidden absolute inset-0 flex-col justify-center items-center pointer-events-none">

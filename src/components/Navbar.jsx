@@ -39,13 +39,17 @@ export const Navbar = () => {
 
      <button
   onClick={() => setIsOpen(!isOpen)}
-  className="md:hidden p-2 z-50"
+  className="md:hidden p-2 "
   aria-label={isOpen ? "Close menu" : "Open menu"}
 >
-  {isOpen ? <X size={24} /> : <Menu size={24} />}
+{isOpen ? (
+  <X size={24} className="z-50" />
+) : (
+  <Menu size={24} className="text-gray-800 cursor-pointer" />
+)}
 </button>
 
-      <div className={cn(" fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
+      <div className={cn(" fixed inset-0 bg-background/95 backdrop-blur-md z-50 flex flex-col items-center justify-center",
       "transition-all duration-300 md:hidden",
       isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
       )}>
