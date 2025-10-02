@@ -63,7 +63,7 @@ export const SplashVideo = () => {
       {/* Mobile / Portrait Video */}
       <video
         ref={mobileVideoRef}
-        className="block md:hidden w-full h-full object-cover absolute inset-0"
+        className=" w-full h-full object-cover "
         autoPlay
         muted
         loop
