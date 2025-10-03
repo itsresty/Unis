@@ -40,7 +40,7 @@ export const HeroSection = () => {
   }
 
   return (
-    <section className="hero min-h-screen flex items-center justify-center ">
+    <section className="hero min-h-screen flex items-center justify-center " id="#herosection">
       <h1 className="text-4xl font-bold">
         <TextType
           text={["Hi, I'm Resty Montero", "Future Full Stack Developer", "Happy coding!"]}
