@@ -16,7 +16,7 @@ export const Navbar = () => {
   const [showSearch, setShowSearch] = useState(false);
 
   return (
-    <nav className="w-full border-b fixed z-999">
+    <nav className="w-full border-b bg-white fixed z-999">
       {/* Desktop Navbar */}
       <div className="hidden md:flex justify-evenly items-center px-6 py-4">
         {/* Logo */}
@@ -41,7 +41,7 @@ export const Navbar = () => {
 
           {/* Search Box only on PC */}
           <div className="flex items-center border rounded-full px-3 py-1">
-            <Search size={18} className="text-gray-500" />
+            <Search size={18} className="text-black" />
             <input
               type="text"
               placeholder="Search..."

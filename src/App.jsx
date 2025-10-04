@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home } from "./pages/Home";
-import { NotFound } from "./pages/NotFound";
-import { Navbar } from "./components/Navbar";
+import { Home } from "./Frontend/pages/Home";
+import { NotFound } from "./Frontend/pages/NotFound";
+import { Navbar } from "./Frontend/components/Navbar";
 
 
 function App() {
